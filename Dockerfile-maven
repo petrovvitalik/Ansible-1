@@ -1,8 +1,14 @@
+# syntax=docker/dockerfile:experimental
 FROM maven:latest
 RUN apt clear && \
     apt update && \
-    apt install git
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git && \
-    git clone http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
+    apt install openssh-client git
+RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN --mount=type=ssh git clone ssh://git@193.122.59.82:2020/petrovvitalik/Artifact-1.git
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /boxfuse-sample-java-war-hello && mvn package
-RUN cp /boxfuse-sample-java-war-hello/target/*.war /Ansible-1/
+RUN cp /boxfuse-sample-java-war-hello/target/*.war /Artifact-1/ && \
+    cd /Artifact-1/
+RUN --mount=type=ssh git add .
+RUN --mount=type=ssh git commit -m "Artifact"
+RUN --mount=type=ssh git push
