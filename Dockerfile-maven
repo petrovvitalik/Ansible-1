@@ -4,7 +4,7 @@ ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update && \
     apt install openssh-client git -y
-RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan 193.122.59.82:2020 >> /root/.ssh/known_hosts
 RUN --mount=type=ssh git clone ssh://git@193.122.59.82:2020/petrovvitalik/Artifact-1.git
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /boxfuse-sample-java-war-hello && mvn package
