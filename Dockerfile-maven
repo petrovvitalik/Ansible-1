@@ -8,7 +8,7 @@ RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /boxfuse-sample-java-war-hello && mvn package
 RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan -p 2020 193.122.59.82 >> /root/.ssh/known_hosts
 RUN --mount=type=ssh git clone ssh://git@193.122.59.82:2020/petrovvitalik/Artifact-1.git
-RUN cp /boxfuse-sample-java-war-hello/target/* /Artifact-1
+RUN cp -r /boxfuse-sample-java-war-hello/target/* /Artifact-1
 RUN --mount=type=ssh cd /Artifact-1/ && git add .
 RUN --mount=type=ssh cd /Artifact-1/ && git commit -m "Artifact"
 RUN --mount=type=ssh cd /Artifact-1/ && git push
