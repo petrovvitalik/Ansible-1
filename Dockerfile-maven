@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:experimental
+# Command To build this image: DOCKER_BUILDKIT=1 docker build http://193.122.59.82:3000/petrovvitalik/Ansible-1/raw/master/Dockerfile-maven --ssh default=/root/.ssh/id_rsa
 FROM ubuntu:20.04
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

@@ -1,0 +1,24 @@
+---
+- name: installing docker
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ensure docker is present
+      apt:
+        name: docker.io
+        state: present
+
+
+- name: starting docker at [builder]
+  hosts: builder
+  become: yes
+
+ tasks:
+   - name: Build an image and push it to a private repo
+     community.docker.docker_image:
+       build:
+         path: http://193.122.59.82:3000/petrovvitalik/Ansible-1/raw/master/Dockerfile-maven
+       name: Maven_image
+       push: yes
+       source: build
