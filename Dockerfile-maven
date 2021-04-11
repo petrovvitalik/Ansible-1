@@ -4,6 +4,7 @@ ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update && \
     apt install openssh-client git maven -y
+RUN git config --global user.name "Docker-Maven" && git config --global user.email "nomad@ag.ru"
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /boxfuse-sample-java-war-hello && mvn package
 RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan -p 2020 193.122.59.82 >> /root/.ssh/known_hosts
