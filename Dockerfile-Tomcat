@@ -1,0 +1,4 @@
+FROM tomcat:8-alpine
+RUN apk update && apk install git -y
+RUN git clone http://193.122.59.82:3000/petrovvitalik/Artifact-1.git
+RUN cp -r /Artifact-1/* /usr/local/tomcat/webapps/
