@@ -10,7 +10,6 @@ RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan -p 2020 193.122.59.82 >> /root/.s
 RUN --mount=type=ssh git clone ssh://git@193.122.59.82:2020/petrovvitalik/Artifact-1.git /Artifact-1/ && \
     cp /boxfuse-sample-java-war-hello/target/*.war /Artifact-1/ && \
     cd /Artifact-1/ && ls
-RUN --mount=type=ssh cd /Artifact-1 &&
-    git add . && \
-    git commit -m "Artifact" && \
-    git push
+RUN --mount=type=ssh git add /Artifact/*
+RUN --mount=type=ssh git commit -m "Artifact" /Artifact/*
+RUN --mount=type=ssh git push /Artifact/*
