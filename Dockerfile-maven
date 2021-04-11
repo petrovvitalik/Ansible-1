@@ -1,8 +1,7 @@
 # syntax=docker/dockerfile:experimental
 FROM maven:latest
-RUN apt clear && \
-    apt update && \
-    apt install openssh-client git
+RUN apk update && \
+    apk add openssh-client git
 RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN --mount=type=ssh git clone ssh://git@193.122.59.82:2020/petrovvitalik/Artifact-1.git
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
