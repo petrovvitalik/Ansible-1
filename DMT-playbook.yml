@@ -25,7 +25,6 @@
       git:
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
         dest: /root/
-        state: present
 
     - name: Build image
       docker_image:
