@@ -67,4 +67,4 @@
         image: root/webapp-tomcat
         state: present
         ports:
-          - "8080:8080:
+          - "8080:8080"
