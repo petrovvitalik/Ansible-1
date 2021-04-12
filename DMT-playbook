@@ -28,7 +28,7 @@
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
         dest: /root/
 
-      - name: Build image
+    - name: Build image
         docker_image:
         path: /root/
         name: Dcockerfile-maven-unsafe
