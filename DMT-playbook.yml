@@ -31,7 +31,7 @@
         dest: /root/builder/
         remote_src: yes
 
-    - name: renaming Dockerfile
+    - name: renaming builder Dockerfile
       command: mv /root/builder/Dcockerfile-maven-unsafe /root/builder/Dockerfile
 
     - name: Build image
@@ -44,6 +44,16 @@
   become: yes
 
   tasks:
+    - name: Cloning Dockerfile to web
+      git:
+        repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
+        dest: /root/web/
+        force: yes
+
+    - name: renaming web Dockerfile
+      command: mv /root/web/Dockerfile-Tomcat /root/web/Dockerfile
+
+
     - name: Build image
       docker_image:
         path: http://193.122.59.82:3000/petrovvitalik/Ansible-1/raw/master/Dockerfile-Tomcat
