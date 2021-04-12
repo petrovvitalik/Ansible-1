@@ -7,7 +7,7 @@
     - name: Ensure docker is present
       apt:
         name: docker-py
-          state: present
+        state: present
       become: yes
 
 - name: Building an image and artifact, pushing to repository
