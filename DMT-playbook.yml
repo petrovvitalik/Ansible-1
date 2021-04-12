@@ -37,7 +37,7 @@
     - name: Build image
       docker_image:
         path: /root/builder/
-        name: Dcockerfile-maven-unsafe
+        name: maven-unsafe
 
 - name: Running tomcat
   hosts: web
