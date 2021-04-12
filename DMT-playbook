@@ -6,8 +6,11 @@
   tasks:
     - name: Ensure docker is present
       apt:
-        name: docker.io
-        state: present
+        name: "{{ item }}"
+          state: present
+          become: yes
+          with_items:
+            - docker-py
 
 - name: Building an image and artifact, pushing to repository
   hosts: builder
@@ -24,8 +27,8 @@
       ansible.builtin.git:
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
         dest: /root/
-  tasks:
-    - name: Build image
+
+      - name: Build image
       docker_image:
         path: /root/
         name: Dcockerfile-maven-unsafe
