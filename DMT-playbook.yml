@@ -34,7 +34,7 @@
     - name: renaming builder Dockerfile
       command: mv /root/builder/Dcockerfile-maven-unsafe /root/builder/Dockerfile
 
-    - name: Build image
+    - name: Build maven image
       docker_image:
         path: /root/builder/
         name: maven-unsafe
@@ -54,7 +54,7 @@
       command: mv /root/web/Dockerfile-Tomcat /root/web/Dockerfile
 
 
-    - name: Build image
+    - name: Build web image
       docker_image:
         path: /root/web/
         name: webapp-tomcat
