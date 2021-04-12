@@ -60,3 +60,11 @@
         name: webapp-tomcat
         buildargs:
           listen_port: 8080
+
+    - name: Launch web app
+      docker:
+        name: webapp-tomcat
+        image: root/webapp-tomcat
+        state: present
+        ports:
+          - "8080:8080:
