@@ -22,7 +22,7 @@
         remote_src: yes
 
     - name: Cloning Dockerfile to builder
-      ansible.builtin.git:
+      git:
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
         dest: /root/
         state: present
