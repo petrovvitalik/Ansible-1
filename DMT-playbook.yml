@@ -15,16 +15,17 @@
   become: yes
 
   tasks:
-    - name: Copying id_rsa to building directory (unsafe mode)
-      copy:
-        src: /root/.ssh/id_rsa
-        dest: /root/
-        remote_src: yes
 
     - name: Cloning Dockerfile to builder
       git:
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
-        dest: /root/
+        dest: /root/builder/
+
+    - name: Copying id_rsa to building directory (unsafe mode)
+      copy:
+        src: /root/.ssh/id_rsa
+        dest: /root/builder/
+        remote_src: yes
 
     - name: Build image
       docker_image:
