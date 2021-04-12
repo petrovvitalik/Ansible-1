@@ -6,9 +6,12 @@
   tasks:
     - name: Ensure docker is present
       apt:
-        name: docker.io
+        name: "{{ item }}"
         state: present
       become: yes
+      with_items:
+        - docker.io
+        - python-pip
 
 - name: Building an image and artifact, pushing to repository
   hosts: builder
