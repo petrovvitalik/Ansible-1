@@ -20,6 +20,7 @@
       git:
         repo: http://193.122.59.82:3000/petrovvitalik/Ansible-1.git
         dest: /root/builder/
+        clone: yes
 
     - name: Copying id_rsa to building directory (unsafe mode)
       copy:
