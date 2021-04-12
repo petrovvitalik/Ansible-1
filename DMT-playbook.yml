@@ -65,6 +65,6 @@
       docker_container:
         name: webapp-tomcat
         image: webapp-tomcat
-        state: present
+        state: started
         ports:
           - "8080:8080"
