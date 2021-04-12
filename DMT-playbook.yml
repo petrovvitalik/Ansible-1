@@ -8,7 +8,7 @@
       apt:
         name: docker-py
           state: present
-          become: yes
+      become: yes
 
 - name: Building an image and artifact, pushing to repository
   hosts: builder
