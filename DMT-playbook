@@ -29,7 +29,7 @@
         dest: /root/
 
       - name: Build image
-      docker_image:
+        docker_image:
         path: /root/
         name: Dcockerfile-maven-unsafe
 
