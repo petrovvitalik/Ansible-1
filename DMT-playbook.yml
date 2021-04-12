@@ -27,6 +27,9 @@
         dest: /root/builder/
         remote_src: yes
 
+    - name: renaming Dockerfile
+      command: mv /root/builder/Dcockerfile-maven-unsafe /root/builder/Dockerfile
+
     - name: Build image
       docker_image:
         path: /root/builder/
